@@ -4,6 +4,7 @@ import { SequelizeModule } from '@nestjs/sequelize';
 import { ConfigModule } from '@nestjs/config';
 import { SequelizeConfigService } from './config/sequelizeConfig.service';
 import { rootConfig } from './config/rootConfig';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -15,6 +16,8 @@ import { rootConfig } from './config/rootConfig';
     ConfigModule.forRoot({ load: [rootConfig] }),
 
     UsersModule,
+
+    AuthModule,
   ],
 })
 export class AppModule {}
