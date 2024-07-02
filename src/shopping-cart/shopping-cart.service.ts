@@ -43,7 +43,7 @@ export class ShoppingCartService {
     return cart.save();
   }
 
-  async updateCount(count: number, partId: string) {
+  async updateCount(count: number, partId: string | number) {
     await this.shoppingCart.update({ count }, { where: { partId } });
 
     const part = await this.shoppingCart.findOne({ where: { partId } });
@@ -51,7 +51,7 @@ export class ShoppingCartService {
     return { count: part.count };
   }
 
-  async updateTotalPrice(total_price: number, partId: string) {
+  async updateTotalPrice(total_price: number, partId: string | number) {
     await this.shoppingCart.update({ total_price }, { where: { partId } });
 
     const part = await this.shoppingCart.findOne({ where: { partId } });
@@ -59,13 +59,13 @@ export class ShoppingCartService {
     return { total_price: part.total_price };
   }
 
-  async deleteOne(partId: string) {
+  async deleteOne(partId: string | number) {
     const part = await this.shoppingCart.findOne({ where: { partId } });
 
     await part.destroy();
   }
 
-  async deleteAll(userId: string) {
+  async deleteAll(userId: string | number) {
     await this.shoppingCart.destroy({ where: { userId } });
   }
 }

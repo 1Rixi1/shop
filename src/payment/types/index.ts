@@ -16,7 +16,7 @@ export class PaymentResponse {
   @ApiProperty({ example: 'Оплата №1' })
   description: string;
 
-  @ApiProperty({ example: { account_id: 403999, gateway_id: 2262906 } })
+  @ApiProperty({ example: { account_id: '403999', gateway_id: '2262906' } })
   recipient: {
     account_id: string;
     gateway_id: string;
