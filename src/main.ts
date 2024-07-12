@@ -11,6 +11,11 @@ async function bootstrap() {
     session({ secret: 'myshop', resave: false, saveUninitialized: false }),
   );
 
+  app.enableCors({
+    credentials: true,
+    origin: ['http://localhost:3000'],
+  });
+
   app.use(passport.initialize());
   app.use(passport.session());
 
